@@ -9,12 +9,12 @@ import { useState } from 'react'
 
 const Formulario = (props) =>{
 
-    const grupo = ['Back-end', 'Front-end', 'Mobile']
+    
 
     const [nome, setNome] = useState('')
     const [cargo, setCargo] = useState('')
     const [imagem, setImagem] = useState('')
-    const [grupos, setGrupos] = useState('')
+    const [time, setTime] = useState('')
 
     
     const aoSalvar = (evento) =>{
@@ -23,8 +23,13 @@ const Formulario = (props) =>{
             nome,
             cargo,
             imagem,
-            grupos
+            time
         })
+
+        setNome('')
+        setCargo('')
+        setImagem('')
+        setTime('')
 
     }
 
@@ -54,10 +59,11 @@ const Formulario = (props) =>{
                 aoAlterado={valor => setImagem(valor)}
                 />
             <ListaSuspensa 
-                label="Grupo" 
-                itens={grupo}
-                valor={grupos}
-                aoAlterado={valor => setGrupos(valor)}
+                obrigatorio={true}
+                label="Time" 
+                itens={props.times}
+                valor={time}
+                aoAlterado={valor => setTime(valor)}
                 />
             <Buttons>Criar Card</Buttons>
         </form>
