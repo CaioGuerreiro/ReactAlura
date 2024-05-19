@@ -4,10 +4,17 @@ import ListaSuspensa from '../ListaSuspensa'
 import Buttons from '../Buttons'
 import './Formulario.css'
 import { useState } from 'react'
+import { IColaborador } from '../../shared/interfaces/IColaborador'
 
 
+interface FormularioProps{
+    aoColaboradorCadastrado: (colaborador: IColaborador) => void
+    times: string[]
 
-const Formulario = (props) =>{
+}
+
+
+const Formulario = (props: FormularioProps) =>{
 
     
 
@@ -17,7 +24,7 @@ const Formulario = (props) =>{
     const [time, setTime] = useState('')
 
     
-    const aoSalvar = (evento) =>{
+    const aoSalvar = (evento: React.FormEvent<HTMLFormElement>) =>{
         evento.preventDefault() // previnir o comportamento padrao
         props.aoColaboradorCadastrado({
             nome,
